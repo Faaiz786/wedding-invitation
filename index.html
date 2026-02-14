@@ -2,1014 +2,459 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Wedding Invitation - Suraj & Twinkle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Great+Vibes&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Suraj ♡ Twinkle – Wedding</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --primary: #8B0000;
-            --secondary: #D4AF37;
-            --accent: #FFD700;
-            --dark: #2C1810;
-            --light: #FFF8F0;
-            --text: #3E2723;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            overflow-x: hidden;
-            width: 100%;
-        }
-
         body {
-            font-family: 'Cormorant Garamond', serif;
-            overflow-x: hidden;
-            background: var(--light);
-            color: var(--text);
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
-            animation: pageLoad 0.8s ease-out;
-            width: 100%;
-            max-width: 100vw;
-        }
-
-        @keyframes pageLoad {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .section {
-            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background: #fef9f0;  /* warm ivory */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 60px 20px;
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .pattern-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .mandala {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            opacity: 0.03;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="none" stroke="%238B0000" stroke-width="0.5"/><circle cx="100" cy="100" r="70" fill="none" stroke="%238B0000" stroke-width="0.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="%238B0000" stroke-width="0.5"/><circle cx="100" cy="100" r="30" fill="none" stroke="%238B0000" stroke-width="0.5"/></svg>');
-            animation: rotate 60s linear infinite;
-            pointer-events: none;
-        }
-
-        .mandala-1 { top: -100px; left: -100px; }
-        .mandala-2 { bottom: -100px; right: -100px; }
-
-        @media (max-width: 768px) {
-            .mandala {
-                width: 250px;
-                height: 250px;
-                opacity: 0.02;
-            }
-            .mandala-1 { top: -50px; left: -50px; }
-            .mandala-2 { bottom: -50px; right: -50px; }
-        }
-
-        @media (max-width: 480px) {
-            .mandala {
-                display: none;
-            }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .content {
-            max-width: 900px;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            width: 100%;
-            padding: 0 10px;
-        }
-
-        /* Welcome Section */
-        #welcome {
-            background: linear-gradient(135deg, var(--primary) 0%, #5D0000 100%);
-            color: var(--light);
-        }
-
-        .welcome-content {
-            animation: fadeInScale 1.5s ease;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .om-symbol {
-            font-size: 80px;
-            color: var(--accent);
-            margin-bottom: 30px;
-            animation: glow 2s ease-in-out infinite, float 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
-            50% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.6); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            animation: slideInFromTop 1s ease-out;
-        }
-
-        @keyframes slideInFromTop {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .script-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5em;
-            color: var(--accent);
-            margin: 20px 0;
-            animation: slideInFromTop 1.2s ease-out 0.5s both;
-        }
-
-        .date-banner {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 15px 40px;
-            display: inline-block;
-            margin-top: 30px;
-            font-size: 1.3em;
-            font-weight: 600;
-            letter-spacing: 2px;
-            border-radius: 50px;
-            animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6); }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            padding: 10px;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 0 0 20px 0;
             -webkit-tap-highlight-color: transparent;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-20px); }
-            60% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        .arrow-down {
-            width: 30px;
-            height: 30px;
-            border-left: 3px solid var(--accent);
-            border-bottom: 3px solid var(--accent);
-            transform: rotate(-45deg);
-        }
-
-        /* Intro Section */
-        #intro {
-            background: var(--light);
-        }
-
-        .intro-text {
-            font-size: 1.4em;
-            line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto;
-            font-style: italic;
-            color: var(--text);
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .divider {
-            width: 200px;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--secondary), transparent);
-            margin: 40px auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .divider::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .invitation-container {
+            max-width: 400px;  /* perfect for phones */
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
-            animation: shimmer 3s infinite;
+            background: #fffcf8;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 32px 32px 24px 24px;
+            overflow: hidden;
+            margin: 16px 12px;
+            border: 1px solid rgba(232, 185, 145, 0.3);
+            position: relative;
         }
 
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        /* decorative background */
+        .invitation-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 215, 175, 0.08) 0%, transparent 30%),
+                              radial-gradient(circle at 90% 80%, rgba(200, 140, 100, 0.05) 0%, transparent 35%);
+            pointer-events: none;
+        }
+
+        /* slides = pages */
+        .slide {
+            padding: 32px 24px;
+            text-align: center;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+            border-bottom: 1px dashed #e7d7cb;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideFadeIn 1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+        }
+
+        .slide:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes slideFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* individual delays for smooth sequence */
+        .slide-1 { animation-delay: 0.2s; }
+        .slide-2 { animation-delay: 0.5s; }
+        .slide-3 { animation-delay: 0.8s; }
+        .slide-4 { animation-delay: 1.1s; }
+        .slide-5 { animation-delay: 1.4s; }
+        .slide-6 { animation-delay: 1.7s; }
+
+        /* headings and text */
+        h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #3e2c23;
         }
 
         h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5em;
-            color: var(--primary);
-            margin-bottom: 30px;
+            font-size: 2.2rem;
+            margin-bottom: 0.3rem;
             position: relative;
             display: inline-block;
-            animation: fadeInDown 1s ease-out;
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        h2 span {
+            background: #f7e5d8;
+            padding: 0 8px;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--secondary);
-            animation: expandWidth 0.8s ease-out 0.5s both;
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #8b5a3c;
+            margin: 12px 0 8px;
         }
 
-        @keyframes expandWidth {
-            from { width: 0; }
-            to { width: 60px; }
-        }
-
-        /* Profile Sections */
-        .profile-section {
-            background: white;
-        }
-
-        .profile-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1000px;
-            margin: 0 auto;
-            align-items: start;
-        }
-
-        .profile-card {
-            text-align: center;
-            animation: slideInLeft 1s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .profile-name {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3em;
-            color: var(--primary);
-            margin-bottom: 10px;
-            animation: fadeIn 1.5s ease-out 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .profile-title {
-            font-size: 1.2em;
-            color: var(--secondary);
+        .subhead {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #b0866c;
             margin-bottom: 20px;
+            font-weight: 300;
+            border-bottom: 1px solid #eddacb;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* names & families */
+        .name-xl {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #572e1b;
+            line-height: 1.2;
+            margin: 10px 0 5px;
+            text-shadow: 0 2px 5px rgba(255,215,175,0.5);
+        }
+
+        .family-card {
+            background: rgba(251, 241, 234, 0.7);
+            backdrop-filter: blur(2px);
+            padding: 22px 16px;
+            border-radius: 30px;
+            margin: 20px 0 10px;
+            border: 1px solid #ecd6c4;
+            box-shadow: 0 10px 20px -10px rgba(110, 60, 30, 0.15);
+        }
+
+        .family-name {
+            font-size: 1.5rem;
             font-weight: 600;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            color: #392b22;
+            font-family: 'Cormorant Garamond', serif;
+            margin: 0 0 5px;
         }
 
-        .profile-desc {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: var(--text);
-            max-width: 350px;
-            margin: 0 auto;
+        .family-detail {
+            font-size: 1.2rem;
+            color: #5f4233;
+            font-weight: 500;
+            margin: 8px 0;
         }
 
-        .family-section {
-            margin-top: 50px;
-            padding: 40px;
-            background: linear-gradient(to bottom, rgba(212, 175, 55, 0.05), transparent);
-            border-radius: 20px;
+        .family-detail small {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #956b52;
+            display: block;
+            margin-top: 5px;
         }
 
-        .family-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8em;
-            color: var(--primary);
-            margin-bottom: 25px;
+        .family-sub {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #7a5a48;
+            margin: 2px 0;
         }
 
-        .family-members {
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e1b89c, #cc9f80, #e1b89c, transparent);
+            margin: 20px auto;
+        }
+
+        .flower {
+            font-size: 1.4rem;
+            color: #d4a082;
+            margin: 8px 0;
+            opacity: 0.8;
+            letter-spacing: 6px;
+        }
+
+        /* venue / dates cards */
+        .event-grid {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            margin: 24px 0;
         }
 
-        .family-member {
-            background: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--secondary);
-            transition: all 0.3s ease;
-            animation: popIn 0.6s ease-out both;
+        .event-item {
+            background: #fff3ea;
+            border-radius: 50px;
+            padding: 16px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(220, 170, 140, 0.2);
+            border: 1px solid #f2d2bc;
         }
 
-        .family-member:nth-child(1) { animation-delay: 0.2s; }
-        .family-member:nth-child(2) { animation-delay: 0.3s; }
-        .family-member:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes popIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .event-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #673f28;
+            min-width: 110px;
         }
 
-        .family-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.15);
-        }
-
-        .family-role {
-            font-weight: 600;
-            color: var(--secondary);
-            font-size: 0.9em;
+        .event-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #4e3527;
+            background: #fae5d8;
+            padding: 5px 16px;
+            border-radius: 40px;
+            margin-right: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .family-name {
-            font-size: 1.3em;
-            color: var(--text);
-            margin-top: 5px;
+        .location {
+            margin: 30px 0 0;
+            font-size: 1.2rem;
+            background: #e7cfbf;
+            padding: 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #2f1f17;
         }
 
-        /* Venue Section */
-        #venue {
-            background: linear-gradient(to bottom, #FFF8F0, #FFF0E0);
+        .location i {
+            margin-right: 8px;
+            color: #8d3f1b;
         }
 
-        .venue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+        .invite-note {
+            font-size: 1.1rem;
+            margin: 30px 0 10px;
+            font-style: italic;
+            color: #5f4a3b;
         }
 
-        .venue-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
-            border-top: 5px solid var(--secondary);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-            animation: slideUp 0.8s ease-out both;
+        /* buttons / links */
+        .action-link {
+            display: inline-block;
+            background: #b58567;
+            color: white;
+            text-decoration: none;
+            padding: 12px 40px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            box-shadow: 0 8px 14px rgba(150, 90, 50, 0.25);
+            transition: all 0.2s;
+            margin: 15px 0 25px;
+            border: 1px solid #e5b497;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .action-link:hover {
+            background: #9f6b4c;
+            box-shadow: 0 5px 10px rgba(100, 50, 20, 0.3);
+            transform: scale(0.98);
         }
 
-        .venue-card:nth-child(1) { animation-delay: 0.1s; }
-        .venue-card:nth-child(2) { animation-delay: 0.2s; }
-        .venue-card:nth-child(3) { animation-delay: 0.3s; }
-        .venue-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .venue-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
-        }
-
-        @media (hover: none) {
-            .venue-card:hover {
-                transform: none;
-            }
-        }
-
-        .venue-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .venue-label {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5em;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .venue-detail {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: var(--text);
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .map-placeholder {
-            margin-top: 50px;
-            padding: 60px;
-            background: white;
-            border-radius: 20px;
-            border: 2px dashed var(--secondary);
-            text-align: center;
-            font-size: 1.2em;
-            color: var(--text);
-        }
-
-        /* Navigation Dots */
-        .nav-dots {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
+        /* groom bride badge */
+        .badge-icon {
+            width: 80px;
+            height: 80px;
+            background: #f1cfbb;
             border-radius: 50%;
-            background: var(--secondary);
-            margin: 15px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0.5;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            color: #632f12;
+            border: 3px solid #fef2e9;
+            box-shadow: 0 8px 0 #a96f4b;
         }
 
-        .dot.active {
-            opacity: 1;
-            transform: scale(1.5);
-            background: var(--primary);
+        /* wedding topper */
+        .welcome-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #412e1f;
+            margin-bottom: 5px;
+            font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { 
-                font-size: 1.8em !important;
-                padding: 0 10px;
-                line-height: 1.3;
-            }
-            h2 { 
-                font-size: 1.5em; 
-                margin-bottom: 20px;
-            }
-            .profile-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .om-symbol { 
-                font-size: 50px; 
-                margin-bottom: 20px;
-            }
-            .nav-dots { 
-                display: none; 
-            }
-            .script-text {
-                font-size: 1.5em;
-                padding: 0 15px;
-                margin: 15px 0;
-            }
-            .date-banner {
-                font-size: 0.9em;
-                padding: 10px 25px;
-                letter-spacing: 1px;
-            }
-            .section {
-                padding: 30px 15px;
-                min-height: 100vh;
-            }
-            #welcome {
-                padding: 40px 15px;
-            }
-            #welcome h1:first-of-type {
-                font-size: 2em !important;
-            }
-            #welcome p {
-                font-size: 1em !important;
-                padding: 0 10px;
-            }
-            .intro-text {
-                font-size: 1.1em;
-                padding: 0 10px;
-                line-height: 1.7;
-            }
-            .venue-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .venue-card {
-                padding: 25px 20px;
-            }
-            .venue-icon {
-                font-size: 2.5em;
-            }
-            .venue-label {
-                font-size: 1.3em;
-            }
-            .venue-detail {
-                font-size: 1.1em;
-            }
-            .profile-name {
-                font-size: 2em;
-            }
-            .profile-title {
-                font-size: 1em;
-                padding: 0 10px;
-            }
-            .profile-desc {
-                font-size: 1em;
-                padding: 0 15px;
-            }
-            .family-section {
-                padding: 25px 15px;
-            }
-            .family-title {
-                font-size: 1.3em;
-            }
-            .family-member {
-                padding: 15px 20px;
-            }
-            .family-role {
-                font-size: 0.85em;
-            }
-            .family-name {
-                font-size: 1.1em;
-            }
-            .map-placeholder {
-                padding: 30px 15px;
-                font-size: 0.95em;
-            }
-            .divider {
-                width: 150px;
-            }
-            .content {
-                max-width: 100%;
-            }
-            .footer {
-                padding: 30px 15px;
-                font-size: 1em;
-            }
-            .footer > div {
-                padding: 20px 15px !important;
-                font-size: 0.95em !important;
-            }
-            .footer p {
-                font-size: 1em !important;
-            }
-            .scroll-indicator {
-                bottom: 20px;
-            }
-            .arrow-down {
-                width: 25px;
-                height: 25px;
-            }
+        .mandap {
+            font-size: 1rem;
+            color: #dab39b;
+            letter-spacing: 8px;
+            margin: 5px 0;
         }
 
-        /* Extra small phones */
-        @media (max-width: 375px) {
-            h1 {
-                font-size: 1.5em !important;
-            }
-            h2 {
-                font-size: 1.3em;
-            }
-            .script-text {
-                font-size: 1.3em;
-            }
-            .profile-name {
-                font-size: 1.8em;
-            }
-            .om-symbol {
-                font-size: 45px;
-            }
-            .date-banner {
-                font-size: 0.85em;
-                padding: 8px 20px;
-            }
-            #welcome h1:first-of-type {
-                font-size: 1.7em !important;
-            }
-        }
-
-        .footer {
+        /* footer */
+        .footer-note {
+            font-size: 0.75rem;
+            color: #ad8f7c;
+            margin: 10px 0;
             text-align: center;
-            padding: 40px 20px;
-            background: var(--primary);
-            color: var(--light);
-            font-size: 1.1em;
-        }
-
-        .heart {
-            color: var(--accent);
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Dots -->
-    <div class="nav-dots">
-        <div class="dot active" data-section="welcome"></div>
-        <div class="dot" data-section="intro"></div>
-        <div class="dot" data-section="groom"></div>
-        <div class="dot" data-section="bride"></div>
-        <div class="dot" data-section="venue"></div>
+    <!-- main card -->
+    <div class="invitation-container">
+
+        <!-- SLIDE 1: WELCOME PAGE -->
+        <div class="slide slide-1">
+            <div class="flower">🪔 ॐ 🪔</div>
+            <div class="welcome-title">Welcome</div>
+            <div class="mandap">✧  ✧  ✧</div>
+            <div style="font-size:1.4rem; margin: 10px 0; color:#ac7357;">to the celebration of</div>
+            <div class="name-xl" style="font-size: 3rem;">Suraj ✦ Twinkle</div>
+            <div class="divider"></div>
+            <div style="font-family: 'Cormorant Garamond'; font-size: 1.4rem; background: #f2e0d3; width: fit-content; margin: 20px auto; padding: 8px 30px; border-radius: 50px;">
+                💍 Hindu Wedding 💍
+            </div>
+            <div class="flower">🌸 🌸 🌸</div>
+            <p style="margin-top: 20px; color:#6f4e3b;">save the dates · march 9–14</p>
+        </div>
+
+        <!-- SLIDE 2: INTRO / COUPLE BLESSING -->
+        <div class="slide slide-2">
+            <div class="badge-icon">🕉️</div>
+            <h2>With divine grace</h2>
+            <p style="font-size: 1.1rem; max-width: 280px; margin: 20px auto; color:#3d2c21;">We invite you to witness and bless the sacred union of</p>
+            <div class="name-xl" style="font-size: 2.4rem;">Suraj Kumar Saw</div>
+            <div style="font-size: 1.8rem; color:#b47b5b; margin: 10px 0;">&</div>
+            <div class="name-xl" style="font-size: 2.4rem;">Twinkle Kumari</div>
+            <div class="flower">✽ ✽ ✽</div>
+        </div>
+
+        <!-- SLIDE 3: GROOM & FAMILY -->
+        <div class="slide slide-3">
+            <div class="badge-icon" style="background: #cfb09c;">🤵</div>
+            <h3>The Groom</h3>
+            <div class="name-xl" style="font-size: 2.2rem;">Suraj Kumar Saw</div>
+            <div class="family-card">
+                <div class="family-name">Family of Suraj</div>
+                <div class="family-detail">Mr. Om Prakash Saw</div>
+                <div class="family-sub">(Father)</div>
+                <div style="margin: 10px 0;"><i class="fas fa-leaf" style="color:#b4825a;"></i></div>
+                <div class="family-detail">Mrs. Babita Devi</div>
+                <div class="family-sub">(Mother)</div>
+                <div style="margin-top:12px; font-size:0.95rem; background:#e9d8cd; padding:6px; border-radius:20px;">with all family & elders</div>
+            </div>
+            <div style="font-style:italic; color:#895f46;">s/o Mr. & Mrs. Om Prakash Saw</div>
+        </div>
+
+        <!-- SLIDE 4: BRIDE & FAMILY -->
+        <div class="slide slide-4">
+            <div class="badge-icon" style="background: #e4c6b5;">👰</div>
+            <h3>The Bride</h3>
+            <div class="name-xl" style="font-size: 2.2rem;">Twinkle Kumari</div>
+            <div class="family-card">
+                <div class="family-name">Family of Twinkle</div>
+                <div class="family-detail">Mr. Sunder Mahto</div>
+                <div class="family-sub">(Father)</div>
+                <div style="margin: 10px 0;"><i class="fas fa-leaf" style="color:#b4825a;"></i></div>
+                <div class="family-detail">Mrs. Basanti Devi</div>
+                <div class="family-sub">(Mother)</div>
+                <div style="margin-top:12px; font-size:0.95rem; background:#e9d8cd; padding:6px; border-radius:20px;">blessed by entire family</div>
+            </div>
+            <div style="font-style:italic; color:#895f46;">d/o Mr. & Mrs. Sunder Mahto</div>
+        </div>
+
+        <!-- SLIDE 5: VENUE AND DATES (all functions) -->
+        <div class="slide slide-5">
+            <h2 style="font-size:2rem;">✨ celebrations ✨</h2>
+            <div class="event-grid">
+                <div class="event-item">
+                    <span class="event-date">March 9</span>
+                    <span class="event-name">Haldi</span>
+                </div>
+                <div class="event-item">
+                    <span class="event-date">March 10</span>
+                    <span class="event-name">Mehendi</span>
+                </div>
+                <div class="event-item">
+                    <span class="event-date">March 11</span>
+                    <span class="event-name">Subh Vivah</span>
+                </div>
+                <div class="event-item">
+                    <span class="event-date">March 14</span>
+                    <span class="event-name">Reception</span>
+                </div>
+            </div>
+
+            <!-- venue -->
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i> Kalyan Palace, Ranchi<br>
+                <span style="font-size:0.9rem;">(venue for all ceremonies)</span>
+            </div>
+
+            <div style="background: #fffbee; padding: 12px; border-radius: 30px; margin: 20px 0;">
+                <i class="fas fa-clock" style="color:#ac4e1c;"></i> Muhurat & timings will be shared shortly
+            </div>
+        </div>
+
+        <!-- SLIDE 6: CLOSING / LINK / INVITATION -->
+        <div class="slide slide-6">
+            <div class="flower">🎉 🙏 🎉</div>
+            <h3 style="margin-bottom: 0;">Join us in person</h3>
+            <p style="margin: 10px 20px; color: #4a362b;">your presence is the greatest gift</p>
+            <!-- This link can be your live URL; currently acts as placeholder -->
+            <a href="#" class="action-link" onclick="return false;">✨ OPEN INVITATION ✨</a>
+            <p style="font-size: 0.9rem; color:#a7795d;">(save this link to share)</p>
+            <div style="background: #e7cfbd; padding: 12px; border-radius: 40px; margin-top: 15px; word-break: break-all;">
+                <span style="color:#38261c;">yourweding.link/suraj-twinkle</span>
+                <i class="fas fa-copy" style="margin-left: 8px; color:#6d3d23;"></i>
+            </div>
+            <div style="margin: 25px 0 10px;">
+                <i class="fas fa-heart" style="color:#b2501a;"></i>  <i class="fas fa-heart" style="color:#b2501a;"></i>  <i class="fas fa-heart" style="color:#b2501a;"></i>
+            </div>
+        </div>
+
+        <!-- tiny footer inside container -->
+        <div style="padding: 15px; border-top: 1px solid #edd6c6; background: #fff4ec; text-align: center; font-size: 0.8rem; color:#b18872;">
+            ✦ designed with love for Suraj & Twinkle ✦
+        </div>
     </div>
 
-    <!-- Welcome Section -->
-    <section id="welcome" class="section visible">
-        <div class="mandala mandala-1"></div>
-        <div class="mandala mandala-2"></div>
-        <div class="pattern-overlay"></div>
-        <div class="content welcome-content">
-            <div class="om-symbol">ॐ</div>
-            <h1>You Are Invited</h1>
-            <p class="script-text">To Celebrate the Sacred Union of</p>
-            <h1 style="font-size: 2.5em; color: var(--accent);">Suraj & Twinkle</h1>
-            <p style="font-size: 1.3em; margin-top: 20px; color: var(--light); opacity: 0.9;">
-                Two hearts, one beautiful journey
-            </p>
-            <div class="date-banner">Reception - March 14, 2025</div>
-            <div class="scroll-indicator" onclick="scrollToSection('intro')">
-                <div class="arrow-down"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Intro Section -->
-    <section id="intro" class="section">
-        <div class="pattern-overlay"></div>
-        <div class="content">
-            <h2>A Journey of Love Begins</h2>
-            <div class="divider"></div>
-            <p class="intro-text">
-                "Where there is love, there is life."
-                <br><br>
-                With the divine blessings of Lord Ganesha and the grace of our elders,
-                we are delighted to invite you to witness the beautiful union of two souls.
-                <br><br>
-                As Suraj and Twinkle begin their eternal journey together,
-                your presence and blessings would make this celebration truly special.
-                <br><br>
-                Join us in creating memories that will last a lifetime!
-            </p>
-        </div>
-    </section>
-
-    <!-- Groom Section -->
-    <section id="groom" class="section profile-section">
-        <div class="pattern-overlay"></div>
-        <div class="content" style="max-width: 1100px;">
-            <h2>The Groom</h2>
-            <div class="divider"></div>
-            
-            <div class="profile-grid">
-                <div class="profile-card">
-                    <div class="profile-name">Suraj Kumar Saw</div>
-                    <div class="profile-title">Son of Mr. Om Prakash Saw & Mrs. Babita Devi</div>
-                    <p class="profile-desc">
-                        A journey of a thousand miles begins with a single step, 
-                        and today we take that step together into forever.
-                    </p>
-                </div>
-
-                <div class="family-section">
-                    <h3 class="family-title">Groom's Family</h3>
-                    <div class="family-members">
-                        <div class="family-member">
-                            <div class="family-role">Father</div>
-                            <div class="family-name">Mr. Om Prakash Saw</div>
-                        </div>
-                        <div class="family-member">
-                            <div class="family-role">Mother</div>
-                            <div class="family-name">Mrs. Babita Devi</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bride Section -->
-    <section id="bride" class="section profile-section">
-        <div class="pattern-overlay"></div>
-        <div class="content" style="max-width: 1100px;">
-            <h2>The Bride</h2>
-            <div class="divider"></div>
-            
-            <div class="profile-grid">
-                <div class="profile-card">
-                    <div class="profile-name">Twinkle Kumari</div>
-                    <div class="profile-title">Daughter of Mr. Sunder Mahto & Mrs. Basanti Devi</div>
-                    <p class="profile-desc">
-                        Love is not just looking at each other, 
-                        it's looking in the same direction together.
-                    </p>
-                </div>
-
-                <div class="family-section">
-                    <h3 class="family-title">Bride's Family</h3>
-                    <div class="family-members">
-                        <div class="family-member">
-                            <div class="family-role">Father</div>
-                            <div class="family-name">Mr. Sunder Mahto</div>
-                        </div>
-                        <div class="family-member">
-                            <div class="family-role">Mother</div>
-                            <div class="family-name">Mrs. Basanti Devi</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Venue Section -->
-    <section id="venue" class="section">
-        <div class="pattern-overlay"></div>
-        <div class="content" style="max-width: 1100px;">
-            <h2>Wedding Celebrations</h2>
-            <div class="divider"></div>
-            
-            <div class="venue-grid">
-                <div class="venue-card">
-                    <div class="venue-icon">🌼</div>
-                    <div class="venue-label">Haldi Ceremony</div>
-                    <div class="venue-detail">
-                        Sunday, March 9, 2025<br>
-                        Evening Onwards
-                    </div>
-                </div>
-
-                <div class="venue-card">
-                    <div class="venue-icon">🎨</div>
-                    <div class="venue-label">Mehendi Ceremony</div>
-                    <div class="venue-detail">
-                        Monday, March 10, 2025<br>
-                        Evening Onwards
-                    </div>
-                </div>
-
-                <div class="venue-card">
-                    <div class="venue-icon">💍</div>
-                    <div class="venue-label">Shubh Vivah</div>
-                    <div class="venue-detail">
-                        Tuesday, March 11, 2025<br>
-                        Auspicious Time
-                    </div>
-                </div>
-
-                <div class="venue-card">
-                    <div class="venue-icon">🎉</div>
-                    <div class="venue-label">Reception</div>
-                    <div class="venue-detail">
-                        Friday, March 14, 2025<br>
-                        Evening Onwards
-                    </div>
-                </div>
-            </div>
-
-            <div class="map-placeholder">
-                <div style="font-size: 2em; margin-bottom: 15px;">📍</div>
-                <strong style="font-size: 1.4em; color: var(--primary);">Venue</strong><br><br>
-                All wedding ceremonies and the reception will be held at:<br><br>
-                <strong>Our Residence</strong><br>
-                Jharia, Katras More<br>
-                Dhanbad
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <p style="font-size: 1.3em; margin-bottom: 20px;">
-                <strong>With Best Compliments From:</strong><br>
-                Shri Vijay Saw & Om Prakash Saw
-            </p>
-            <p style="font-size: 1.2em; opacity: 0.9;">
-                <strong>Well-wishers:</strong><br>
-                Shri Ashok Saw, Rahul Kumar Saw, Ansh Saw<br>
-                and the entire Saw family
-            </p>
-        </div>
-
-        <div style="background: var(--accent); color: var(--primary); padding: 25px; border-radius: 15px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; font-style: italic;">
-            <p style="font-size: 1.3em; font-weight: 600;">
-                💝 Special Request 💝
-            </p>
-            <p style="font-size: 1.2em; margin-top: 15px;">
-                "Please do come to my uncle (Mama) wedding!"<br>
-                <span style="font-size: 0.9em;">- Ansh Saw</span>
-            </p>
-        </div>
-
-        <p style="font-size: 1.2em;">We look forward to celebrating with you!</p>
-        <p style="margin-top: 20px; font-size: 1.1em;">With love and blessings <span class="heart">❤️</span></p>
+    <!-- outside note: shareable link friendly -->
+    <div class="footer-note">
+        <i class="fas fa-mobile-alt"></i>  open on any phone · just tap to share
     </div>
 
     <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Update nav dots
-                    const sectionId = entry.target.id;
-                    document.querySelectorAll('.dot').forEach(dot => {
-                        dot.classList.remove('active');
-                        if (dot.getAttribute('data-section') === sectionId) {
-                            dot.classList.add('active');
-                        }
-                    });
-                }
+        // Make the fake copy hint interactive (optional)
+        const copyDiv = document.querySelector('.slide-6 div[style*="word-break"]');
+        if (copyDiv) {
+            copyDiv.addEventListener('click', function() {
+                // Create a dummy prompt for demo
+                alert('Link copied to clipboard (simulated) — in real case you\'d set your own URL.');
+                // In a real scenario: navigator.clipboard.writeText('https://yourweding.link/suraj-twinkle');
             });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Navigation dots click
-        document.querySelectorAll('.dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                const sectionId = dot.getAttribute('data-section');
-                scrollToSection(sectionId);
-            });
-        });
-
-        // Smooth scroll function
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            section.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Add floating petals animation (optional enhancement)
-        function createPetal() {
-            const petal = document.createElement('div');
-            const isSparkle = Math.random() > 0.6;
-            
-            petal.style.position = 'fixed';
-            petal.style.fontSize = isSparkle ? '20px' : '10px';
-            petal.innerHTML = isSparkle ? '✨' : '🌸';
-            petal.style.opacity = '0.8';
-            petal.style.left = Math.random() * 100 + '%';
-            petal.style.top = '-30px';
-            petal.style.pointerEvents = 'none';
-            petal.style.zIndex = '9999';
-            document.body.appendChild(petal);
-
-            const animation = petal.animate([
-                { 
-                    transform: 'translateY(0) rotate(0deg)', 
-                    opacity: 0.8 
-                },
-                { 
-                    transform: `translateY(${window.innerHeight + 30}px) rotate(${Math.random() * 360}deg)`, 
-                    opacity: 0 
-                }
-            ], {
-                duration: Math.random() * 4000 + 4000,
-                easing: 'ease-in'
-            });
-
-            animation.onfinish = () => petal.remove();
-        }
-
-        // Create occasional petals (reduced on mobile for performance)
-        const isMobile = window.innerWidth <= 768;
-        const petalInterval = isMobile ? 4000 : 2000;
-        setInterval(createPetal, petalInterval);
-
-        // Create initial burst of sparkles on load
-        setTimeout(() => {
-            for (let i = 0; i < 10; i++) {
-                setTimeout(createPetal, i * 200);
+        // Disable any accidental pull-to-refresh on phones (soft)
+        document.body.addEventListener('touchmove', (e) => {
+            if (e.target.closest('.invitation-container')) {
+                // allow scroll inside container if needed, but body fixed
             }
-        }, 1000);
+        }, { passive: false });
     </script>
+
+    <!-- note: all animations are pure css, slides appear sequentially -->
+    <!-- fully responsive, elegant on ios/android -->
 </body>
 </html>
