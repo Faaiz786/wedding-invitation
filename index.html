@@ -27,6 +27,7 @@
         html {
             overflow-x: hidden;
             width: 100%;
+            perspective: 1000px;
         }
 
         body {
@@ -58,13 +59,40 @@
             position: relative;
             padding: 60px 20px;
             opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        }
+
+        /* Alternate horizontal slide directions with subtle rotation */
+        .section:nth-child(odd) {
+            transform: translateX(-100px) rotateY(5deg) scale(0.95);
+        }
+
+        .section:nth-child(even) {
+            transform: translateX(100px) rotateY(-5deg) scale(0.95);
         }
 
         .section.visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateX(0) rotateY(0deg) scale(1);
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.08);
+        }
+
+        /* Simplify on mobile */
+        @media (max-width: 768px) {
+            .section:nth-child(odd) {
+                transform: translateX(-50px) scale(0.95);
+            }
+
+            .section:nth-child(even) {
+                transform: translateX(50px) scale(0.95);
+            }
+
+            .section.visible {
+                transform: translateX(0) scale(1);
+                box-shadow: none;
+            }
         }
 
         .pattern-overlay {
@@ -326,15 +354,6 @@
             background: white;
         }
 
-        .profile-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1000px;
-            margin: 0 auto;
-            align-items: start;
-        }
-
         .profile-card {
             text-align: center;
             animation: slideInLeft 1s ease-out;
@@ -377,73 +396,8 @@
             font-size: 1.1em;
             line-height: 1.6;
             color: var(--text);
-            max-width: 350px;
+            max-width: 450px;
             margin: 0 auto;
-        }
-
-        .family-section {
-            margin-top: 50px;
-            padding: 40px;
-            background: linear-gradient(to bottom, rgba(212, 175, 55, 0.05), transparent);
-            border-radius: 20px;
-        }
-
-        .family-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8em;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-
-        .family-members {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .family-member {
-            background: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--secondary);
-            transition: all 0.3s ease;
-            animation: popIn 0.6s ease-out both;
-        }
-
-        .family-member:nth-child(1) { animation-delay: 0.2s; }
-        .family-member:nth-child(2) { animation-delay: 0.3s; }
-        .family-member:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes popIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .family-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.15);
-        }
-
-        .family-role {
-            font-weight: 600;
-            color: var(--secondary);
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .family-name {
-            font-size: 1.3em;
-            color: var(--text);
-            margin-top: 5px;
         }
 
         /* Venue Section */
@@ -565,10 +519,6 @@
                 font-size: 1.5em; 
                 margin-bottom: 20px;
             }
-            .profile-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
             .om-symbol { 
                 font-size: 50px; 
                 margin-bottom: 20px;
@@ -585,10 +535,6 @@
                 font-size: 0.9em;
                 padding: 10px 25px;
                 letter-spacing: 1px;
-            }
-            .section {
-                padding: 30px 15px;
-                min-height: 100vh;
             }
             #welcome {
                 padding: 40px 15px;
@@ -631,21 +577,6 @@
             .profile-desc {
                 font-size: 1em;
                 padding: 0 15px;
-            }
-            .family-section {
-                padding: 25px 15px;
-            }
-            .family-title {
-                font-size: 1.3em;
-            }
-            .family-member {
-                padding: 15px 20px;
-            }
-            .family-role {
-                font-size: 0.85em;
-            }
-            .family-name {
-                font-size: 1.1em;
             }
             .map-placeholder {
                 padding: 30px 15px;
@@ -779,29 +710,13 @@
             <h2>The Groom</h2>
             <div class="divider"></div>
             
-            <div class="profile-grid">
-                <div class="profile-card">
-                    <div class="profile-name">Suraj Kumar Saw</div>
-                    <div class="profile-title">Son of Mr. Om Prakash Saw & Mrs. Babita Devi</div>
-                    <p class="profile-desc">
-                        A journey of a thousand miles begins with a single step, 
-                        and today we take that step together into forever.
-                    </p>
-                </div>
-
-                <div class="family-section">
-                    <h3 class="family-title">Groom's Family</h3>
-                    <div class="family-members">
-                        <div class="family-member">
-                            <div class="family-role">Father</div>
-                            <div class="family-name">Mr. Om Prakash Saw</div>
-                        </div>
-                        <div class="family-member">
-                            <div class="family-role">Mother</div>
-                            <div class="family-name">Mrs. Babita Devi</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="profile-card" style="max-width: 500px; margin: 0 auto;">
+                <div class="profile-name">Suraj Kumar Saw</div>
+                <div class="profile-title">Son of Mr. Om Prakash Saw & Mrs. Babita Devi</div>
+                <p class="profile-desc">
+                    A journey of a thousand miles begins with a single step, 
+                    and today we take that step together into forever.
+                </p>
             </div>
         </div>
     </section>
@@ -813,29 +728,13 @@
             <h2>The Bride</h2>
             <div class="divider"></div>
             
-            <div class="profile-grid">
-                <div class="profile-card">
-                    <div class="profile-name">Twinkle Kumari</div>
-                    <div class="profile-title">Daughter of Mr. Sunder Mahto & Mrs. Basanti Devi</div>
-                    <p class="profile-desc">
-                        Love is not just looking at each other, 
-                        it's looking in the same direction together.
-                    </p>
-                </div>
-
-                <div class="family-section">
-                    <h3 class="family-title">Bride's Family</h3>
-                    <div class="family-members">
-                        <div class="family-member">
-                            <div class="family-role">Father</div>
-                            <div class="family-name">Mr. Sunder Mahto</div>
-                        </div>
-                        <div class="family-member">
-                            <div class="family-role">Mother</div>
-                            <div class="family-name">Mrs. Basanti Devi</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="profile-card" style="max-width: 500px; margin: 0 auto;">
+                <div class="profile-name">Twinkle Kumari</div>
+                <div class="profile-title">Daughter of Mr. Sunder Mahto & Mrs. Basanti Devi</div>
+                <p class="profile-desc">
+                    Love is not just looking at each other, 
+                    it's looking in the same direction together.
+                </p>
             </div>
         </div>
     </section>
