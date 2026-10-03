@@ -90,7 +90,6 @@
       transition: all 0.4s ease-in-out;
     }
 
-    /* Subtle Calligraphy Scaling & Glow in Card Boxes */
     .glass-card:hover .font-arabic {
       text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
       transform: scale(1.02);
@@ -101,13 +100,11 @@
       transform: scale(1.02);
     }
 
-    /* English Serif Title Color & Letter Spacing Transitions */
     .glass-card:hover .font-serif-title {
       color: #735928;
       letter-spacing: 0.03em;
     }
 
-    /* Subtitle Tracking Expansion on Hover */
     .glass-card .tracking-expand {
       transition: letter-spacing 0.4s ease, color 0.4s ease;
     }
@@ -162,16 +159,8 @@
   <div id="welcomeScreen" class="fixed inset-0 z-[100] bg-[#FAF7F2] flex flex-col items-center justify-center p-4 sm:p-6 text-center transition-all duration-1000 w-full h-full bg-floral-invitation">
     <div class="relative w-full max-w-sm sm:max-w-md glass-card p-8 sm:p-12 rounded-3xl animate-float mx-auto text-center border-2 border-[#d4af37]/30 shadow-2xl group">
       
-      <!-- Elegant Arch Flower Icon -->
-      <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-[#a38148] flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-full h-full">
-          <path d="M12 2C8 2 5 5 5 9v11h14V9c0-4-3-7-7-7z" stroke-dasharray="2 2"/>
-          <path d="M12 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="rgba(212, 175, 55, 0.2)"/>
-          <path d="M12 15v5M9 18h6"/>
-        </svg>
-      </div>
-
-      <p class="font-arabic text-2xl sm:text-4xl text-[#8c6f37] font-bold mb-2 leading-relaxed">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+      <!-- Bismillah text directly at top (upper symbols removed) -->
+      <p class="font-arabic text-2xl sm:text-4xl text-[#8c6f37] font-bold mb-3 leading-relaxed mt-2">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
       <h2 class="font-serif-title text-3xl sm:text-4xl font-semibold text-[#2d2d2d] my-2 tracking-wide">Walima Invitation</h2>
       <p class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#8c7a6b] font-semibold mb-8 tracking-expand">Md Nafis Ansari & Afreen</p>
       
@@ -182,10 +171,9 @@
     </div>
   </div>
 
-  <!-- Audio Element: Soft Ambient Piano & Acoustic String Notes -->
-  <audio id="bgMusic" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-ambient-111154.mp3"></audio>
+  <!-- Audio Element: Soft Peaceful Ambient Instrumental Track -->
+  <audio id="bgMusic" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f1e1cb.mp3?filename=soft-ambient-124484.mp3"></audio>
 
-  <!-- Top Controls: Music Toggle -->
   <div class="fixed top-4 right-4 sm:top-6 sm:right-6 z-50">
     <button id="audioToggle" onclick="toggleAudio()" class="glass-card text-[#8c6f37] p-3 rounded-full shadow-lg border border-[#d4af37]/40 hover:bg-white active:scale-95 transition-all flex items-center justify-center cursor-pointer" aria-label="Toggle Audio">
       <svg id="musicIconPlay" class="w-4 h-4 sm:w-5 sm:h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -198,37 +186,29 @@
     <div></div>
 
     <div data-aos="zoom-in" class="glass-card p-8 sm:p-14 rounded-3xl border border-[#d4af37]/30 shadow-xl w-full max-w-md sm:max-w-xl mx-auto text-center my-auto relative group">
-      
-      <!-- Elegant Floral Divider -->
-      <div class="flex items-center justify-center gap-3 mb-4" data-aos="fade-down" data-aos-delay="100">
-        <span class="h-[1px] w-8 bg-[#d4af37]/50 group-hover:w-12 transition-all duration-500"></span>
-        <svg class="w-5 h-5 text-[#d4af37] transition-transform duration-500 group-hover:rotate-45" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
-        <span class="h-[1px] w-8 bg-[#d4af37]/50 group-hover:w-12 transition-all duration-500"></span>
-      </div>
-
       <!-- Hamd -->
-      <p data-aos="fade-down" data-aos-delay="200" class="font-arabic text-3xl sm:text-5xl text-[#8c6f37] font-bold mb-2 text-center leading-relaxed" dir="rtl">
+      <p data-aos="fade-down" data-aos-delay="100" class="font-arabic text-3xl sm:text-5xl text-[#8c6f37] font-bold mb-2 text-center leading-relaxed" dir="rtl">
         الْحَمْدُ لِلَّٰهِ
       </p>
 
-      <p data-aos="fade-up" data-aos-delay="300" class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#8c7a6b] font-semibold mb-8 text-center tracking-expand" dir="ltr">
+      <p data-aos="fade-up" data-aos-delay="200" class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#8c7a6b] font-semibold mb-8 text-center tracking-expand" dir="ltr">
         All Praise & Thanks Belong to Allah
       </p>
 
-      <div data-aos="zoom-in" data-aos-delay="400" class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-8 group-hover:w-28 transition-all duration-500"></div>
+      <div data-aos="zoom-in" data-aos-delay="300" class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-8 group-hover:w-28 transition-all duration-500"></div>
 
       <!-- Bismillah -->
-      <p data-aos="fade-up" data-aos-delay="500" class="font-arabic text-2xl sm:text-4xl text-[#2d2d2d] leading-relaxed my-2 text-center" dir="rtl">
+      <p data-aos="fade-up" data-aos-delay="400" class="font-arabic text-2xl sm:text-4xl text-[#2d2d2d] leading-relaxed my-2 text-center" dir="rtl">
         بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
       </p>
 
-      <p data-aos="fade-up" data-aos-delay="600" class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#8c7a6b] font-semibold mt-4 text-center tracking-expand" dir="ltr">
+      <p data-aos="fade-up" data-aos-delay="500" class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#8c7a6b] font-semibold mt-4 text-center tracking-expand" dir="ltr">
         In the name of Allah, the Most Gracious, the Most Merciful
       </p>
     </div>
 
     <!-- Scroll Indicator -->
-    <a href="#section2" data-aos="fade-up" data-aos-delay="700" class="my-4 animate-bounce text-[10px] uppercase tracking-[0.2em] text-[#8c6f37] font-semibold flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
+    <a href="#section2" data-aos="fade-up" data-aos-delay="600" class="my-4 animate-bounce text-[10px] uppercase tracking-[0.2em] text-[#8c6f37] font-semibold flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
       <span>Scroll To View Invitation</span>
       <svg class="w-4 h-4 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
     </a>
@@ -325,7 +305,7 @@
   </section>
 
   <!-- ==================== SECTION 4: VENUE & PROGRAM DETAILS ==================== -->
-  <section id="section4" class="py-16 sm:py-24 px-4 w-full max-w-2xl mx-auto text-center z-20 relative">
+  <section id="section4" class="py-16 sm:py-20 px-4 w-full max-w-2xl mx-auto text-center z-20 relative">
     <div class="w-full text-center" dir="ltr">
       <h2 data-aos="fade-right" class="font-serif-title text-3xl sm:text-4xl mb-8 text-[#2d2d2d] text-center font-semibold">Venue & Program Details</h2>
       
@@ -347,8 +327,46 @@
     </div>
   </section>
 
-  <!-- ==================== SECTION 5: INVITATION REQUEST ==================== -->
-  <section id="section5" class="py-16 sm:py-24 px-4 w-full max-w-2xl mx-auto text-center z-20 relative">
+  <!-- ==================== SECTION 5: INLINE COUNTDOWN TIMER SECTION ==================== -->
+  <section id="section-countdown" class="pb-16 sm:pb-24 px-4 w-full max-w-2xl mx-auto text-center z-20 relative">
+    <div data-aos="zoom-in" class="glass-card p-8 sm:p-12 rounded-3xl border border-[#d4af37]/30 shadow-xl text-center group">
+      
+      <!-- In Shaa Allah Calligraphy -->
+      <p class="font-arabic text-2xl sm:text-3xl text-[#8c6f37] font-bold mb-1 leading-relaxed" dir="rtl">
+        إِنْ شَاءَ ٱللَّٰهُ
+      </p>
+
+      <h3 class="font-serif-title text-2xl sm:text-3xl font-semibold text-[#2d2d2d] mb-1">
+        Countdown to our Walima
+      </h3>
+      <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#8c7a6b] font-semibold mb-8">
+        WEDNESDAY, 7 APRIL 2027 · 7:00 PM
+      </p>
+
+      <!-- 4 Unit Grid Live Timer -->
+      <div class="grid grid-cols-4 gap-2.5 sm:gap-4 text-center max-w-md mx-auto">
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/30 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="inline-timer-days" class="block font-serif-title text-2xl sm:text-4xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.15em] text-gray-500 font-semibold">DAYS</span>
+        </div>
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/30 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="inline-timer-hours" class="block font-serif-title text-2xl sm:text-4xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.15em] text-gray-500 font-semibold">HOURS</span>
+        </div>
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/30 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="inline-timer-minutes" class="block font-serif-title text-2xl sm:text-4xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.15em] text-gray-500 font-semibold">MINS</span>
+        </div>
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/30 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="inline-timer-seconds" class="block font-serif-title text-2xl sm:text-4xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.15em] text-gray-500 font-semibold">SECS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: INVITATION REQUEST ==================== -->
+  <section id="section6" class="pb-16 sm:pb-24 px-4 w-full max-w-2xl mx-auto text-center z-20 relative">
     <div data-aos="fade-up" class="glass-card p-8 sm:p-12 rounded-3xl border border-[#d4af37]/30 shadow-lg text-center group">
       <p data-aos="fade-left" dir="rtl" class="font-urdu text-lg sm:text-2xl text-[#8c6f37] mb-4 text-center leading-relaxed">آپ کی تشریف آوری ہمارے لیے باعثِ مسرت ہوگی</p>
       <h2 dir="ltr" class="font-serif-title text-2xl sm:text-3xl mb-3 text-[#2d2d2d] text-center font-semibold">Kindly Grace Us With Your Presence</h2>
@@ -364,14 +382,6 @@
     </div>
   </section>
 
-  <!-- ==================== FLOATING COUNTDOWN TRIGGER ==================== -->
-  <div class="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40">
-    <button onclick="toggleCountdownModal()" type="button" class="glass-card text-[#8c6f37] px-4 py-2.5 rounded-full shadow-xl border border-[#d4af37]/40 hover:bg-white active:scale-95 transition-all flex items-center gap-2 text-[10px] font-semibold tracking-[0.2em] uppercase cursor-pointer">
-      <svg class="w-4 h-4 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      <span>Countdown</span>
-    </button>
-  </div>
-
   <!-- ==================== COUNTDOWN POP-UP MODAL ==================== -->
   <div id="countdownModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
     <div class="glass-card bg-[#FAF7F2] rounded-3xl p-6 sm:p-10 max-w-sm sm:max-w-md w-full text-center relative border border-[#d4af37]/40 shadow-2xl mx-auto group transform scale-95 transition-all duration-300">
@@ -381,7 +391,7 @@
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
-      <!-- In Shaa Allah Arabic Calligraphy Header -->
+      <!-- In Shaa Allah Calligraphy Header -->
       <p class="font-arabic text-2xl sm:text-3xl text-[#8c6f37] font-bold mb-1 leading-relaxed" dir="rtl">
         إِنْ شَاءَ ٱللَّٰهُ
       </p>
@@ -397,19 +407,19 @@
       <!-- 4 Unit Grid Timer Cards -->
       <div class="grid grid-cols-4 gap-2 sm:gap-3 text-center mb-2">
         <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
-          <span id="timer-days" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span id="modal-timer-days" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
           <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">DAYS</span>
         </div>
         <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
-          <span id="timer-hours" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span id="modal-timer-hours" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
           <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">HOURS</span>
         </div>
         <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
-          <span id="timer-minutes" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span id="modal-timer-minutes" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
           <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">MINS</span>
         </div>
         <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
-          <span id="timer-seconds" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span id="modal-timer-seconds" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
           <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">SECS</span>
         </div>
       </div>
@@ -435,8 +445,8 @@
         welcomeScreen.classList.add('hidden');
       }, 1000);
 
-      // Start background music with comfortable ambient volume
-      bgMusic.volume = 0.35;
+      // Start soft background music
+      bgMusic.volume = 0.3;
       bgMusic.play().catch((err) => {
         console.log("Autoplay prevented:", err);
       });
@@ -458,30 +468,41 @@
       });
     });
 
-    // 2. Live Countdown Logic
+    // 2. Dual Countdown Timer Logic (Inline & Modal sync)
     const weddingDate = new Date("April 07, 2027 19:00:00").getTime();
 
     function updateCountdownTimer() {
       const currentTime = new Date().getTime();
       const distance = weddingDate - currentTime;
 
+      const formatted = (val) => val < 10 ? '0' + val : val;
+
       if (distance < 0) {
-        document.getElementById("timer-days").innerText = "00";
-        document.getElementById("timer-hours").innerText = "00";
-        document.getElementById("timer-minutes").innerText = "00";
-        document.getElementById("timer-seconds").innerText = "00";
+        ['inline-timer-', 'modal-timer-'].forEach(prefix => {
+          document.getElementById(prefix + "days").innerText = "00";
+          document.getElementById(prefix + "hours").innerText = "00";
+          document.getElementById(prefix + "minutes").innerText = "00";
+          document.getElementById(prefix + "seconds").innerText = "00";
+        });
         return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = formatted(Math.floor(distance / (1000 * 60 * 60 * 24)));
+      const hours = formatted(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      const minutes = formatted(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+      const seconds = formatted(Math.floor((distance % (1000 * 60)) / 1000));
 
-      document.getElementById("timer-days").innerText = days < 10 ? '0' + days : days;
-      document.getElementById("timer-hours").innerText = hours < 10 ? '0' + hours : hours;
-      document.getElementById("timer-minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
-      document.getElementById("timer-seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+      // Update Inline Timer
+      document.getElementById("inline-timer-days").innerText = days;
+      document.getElementById("inline-timer-hours").innerText = hours;
+      document.getElementById("inline-timer-minutes").innerText = minutes;
+      document.getElementById("inline-timer-seconds").innerText = seconds;
+
+      // Update Modal Timer
+      document.getElementById("modal-timer-days").innerText = days;
+      document.getElementById("modal-timer-hours").innerText = hours;
+      document.getElementById("modal-timer-minutes").innerText = minutes;
+      document.getElementById("modal-timer-seconds").innerText = seconds;
     }
     
     updateCountdownTimer();
