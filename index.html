@@ -46,8 +46,16 @@
     /* Gold Metallic Shimmer Text Effect */
     .text-gold-shimmer {
       background: linear-gradient(135deg, #a38148 0%, #d4af37 50%, #8c6f37 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: shineGold 4s linear infinite;
+    }
+
+    @keyframes shineGold {
+      to {
+        background-position: 200% center;
+      }
     }
 
     @keyframes floatSlow {
@@ -58,21 +66,64 @@
       animation: floatSlow 6s ease-in-out infinite;
     }
 
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.6; transform: scale(1); }
-      50% { opacity: 0.9; transform: scale(1.03); }
-    }
-    .animate-pulse-glow {
-      animation: pulseGlow 4s ease-in-out infinite;
-    }
-
-    /* Smooth Glassmorphism Cards */
+    /* Animated Glassmorphism Cards with Hover Transitions */
     .glass-card {
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(212, 175, 55, 0.3);
       box-shadow: 0 15px 35px -5px rgba(140, 122, 107, 0.12), 0 0 15px rgba(212, 175, 55, 0.08);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      box-shadow: 0 20px 45px -5px rgba(140, 122, 107, 0.2), 0 0 25px rgba(212, 175, 55, 0.2);
+      transform: translateY(-4px);
+    }
+
+    /* Dynamic Box Typography & Text Transitions */
+    .glass-card .font-serif-title,
+    .glass-card .font-sans-body,
+    .glass-card .font-arabic,
+    .glass-card .font-urdu {
+      transition: all 0.4s ease-in-out;
+    }
+
+    /* Subtle Calligraphy Scaling & Glow in Card Boxes */
+    .glass-card:hover .font-arabic {
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+      transform: scale(1.02);
+    }
+
+    .glass-card:hover .font-urdu {
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+      transform: scale(1.02);
+    }
+
+    /* English Serif Title Color & Letter Spacing Transitions */
+    .glass-card:hover .font-serif-title {
+      color: #735928;
+      letter-spacing: 0.03em;
+    }
+
+    /* Subtitle Tracking Expansion on Hover */
+    .glass-card .tracking-expand {
+      transition: letter-spacing 0.4s ease, color 0.4s ease;
+    }
+
+    .glass-card:hover .tracking-expand {
+      letter-spacing: 0.3em;
+      color: #8c6f37;
+    }
+
+    /* Countdown digit bounce on hover */
+    .countdown-digit {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .countdown-box:hover .countdown-digit {
+      transform: scale(1.1);
+      color: #a38148;
     }
   </style>
 </head>
@@ -100,10 +151,10 @@
 
   <!-- ==================== WELCOME COVER OVERLAY ==================== -->
   <div id="welcomeScreen" class="fixed inset-0 z-[100] bg-[#FAF7F2] flex flex-col items-center justify-center p-4 sm:p-6 text-center transition-all duration-1000 w-full h-full bg-floral-invitation">
-    <div class="relative w-full max-w-sm sm:max-w-md glass-card p-8 sm:p-12 rounded-3xl animate-float mx-auto text-center border-2 border-[#d4af37]/30 shadow-2xl">
+    <div class="relative w-full max-w-sm sm:max-w-md glass-card p-8 sm:p-12 rounded-3xl animate-float mx-auto text-center border-2 border-[#d4af37]/30 shadow-2xl group">
       
       <!-- Elegant Arch Flower Icon -->
-      <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-[#a38148] flex items-center justify-center">
+      <div class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 text-[#a38148] flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-full h-full">
           <path d="M12 2C8 2 5 5 5 9v11h14V9c0-4-3-7-7-7z" stroke-dasharray="2 2"/>
           <path d="M12 6a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="rgba(212, 175, 55, 0.2)"/>
@@ -113,7 +164,7 @@
 
       <p class="font-arabic text-2xl sm:text-4xl text-[#8c6f37] font-bold mb-2 leading-relaxed">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
       <h2 class="font-serif-title text-3xl sm:text-4xl font-semibold text-[#2d2d2d] my-2 tracking-wide">Walima Invitation</h2>
-      <p class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#8c7a6b] font-semibold mb-8">Md Nafis Ansari & Afreen</p>
+      <p class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#8c7a6b] font-semibold mb-8 tracking-expand">Md Nafis Ansari & Afreen</p>
       
       <button onclick="openInvitation()" type="button" class="w-full py-3.5 bg-gradient-to-r from-[#8c7a6b] via-[#a38148] to-[#8c7a6b] text-white rounded-xl shadow-xl hover:opacity-95 active:scale-95 transition-all duration-300 font-medium text-[11px] sm:text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2.5 cursor-pointer border border-[#d4af37]/40">
         <svg class="w-4 h-4 text-[#FAF7F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5"/></svg>
@@ -137,13 +188,13 @@
   <section id="section1" class="min-h-screen flex flex-col justify-between items-center text-center px-4 py-12 relative w-full max-w-3xl mx-auto z-20">
     <div></div>
 
-    <div data-aos="zoom-in" class="glass-card p-8 sm:p-14 rounded-3xl border border-[#d4af37]/30 shadow-xl w-full max-w-md sm:max-w-xl mx-auto text-center my-auto relative">
+    <div data-aos="zoom-in" class="glass-card p-8 sm:p-14 rounded-3xl border border-[#d4af37]/30 shadow-xl w-full max-w-md sm:max-w-xl mx-auto text-center my-auto relative group">
       
       <!-- Elegant Floral Divider -->
       <div class="flex items-center justify-center gap-3 mb-4" data-aos="fade-down" data-aos-delay="100">
-        <span class="h-[1px] w-8 bg-[#d4af37]/50"></span>
-        <svg class="w-5 h-5 text-[#d4af37]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
-        <span class="h-[1px] w-8 bg-[#d4af37]/50"></span>
+        <span class="h-[1px] w-8 bg-[#d4af37]/50 group-hover:w-12 transition-all duration-500"></span>
+        <svg class="w-5 h-5 text-[#d4af37] transition-transform duration-500 group-hover:rotate-45" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
+        <span class="h-[1px] w-8 bg-[#d4af37]/50 group-hover:w-12 transition-all duration-500"></span>
       </div>
 
       <!-- Hamd -->
@@ -151,18 +202,18 @@
         الْحَمْدُ لِلَّٰهِ
       </p>
 
-      <p data-aos="fade-up" data-aos-delay="300" class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#8c7a6b] font-semibold mb-8 text-center" dir="ltr">
+      <p data-aos="fade-up" data-aos-delay="300" class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#8c7a6b] font-semibold mb-8 text-center tracking-expand" dir="ltr">
         All Praise & Thanks Belong to Allah
       </p>
 
-      <div data-aos="zoom-in" data-aos-delay="400" class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-8"></div>
+      <div data-aos="zoom-in" data-aos-delay="400" class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-8 group-hover:w-28 transition-all duration-500"></div>
 
       <!-- Bismillah -->
       <p data-aos="fade-up" data-aos-delay="500" class="font-arabic text-2xl sm:text-4xl text-[#2d2d2d] leading-relaxed my-2 text-center" dir="rtl">
         بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
       </p>
 
-      <p data-aos="fade-up" data-aos-delay="600" class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#8c7a6b] font-semibold mt-4 text-center" dir="ltr">
+      <p data-aos="fade-up" data-aos-delay="600" class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#8c7a6b] font-semibold mt-4 text-center tracking-expand" dir="ltr">
         In the name of Allah, the Most Gracious, the Most Merciful
       </p>
     </div>
@@ -184,23 +235,23 @@
       </p>
 
       <!-- Couple Names Card -->
-      <div data-aos="zoom-in" data-aos-delay="200" class="glass-card p-8 sm:p-16 rounded-3xl border border-[#d4af37]/30 shadow-xl w-full max-w-lg sm:max-w-2xl mx-auto text-center relative">
-        <p class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-[#8c7a6b] font-medium mb-6">Together With Their Families</p>
+      <div data-aos="zoom-in" data-aos-delay="200" class="glass-card p-8 sm:p-16 rounded-3xl border border-[#d4af37]/30 shadow-xl w-full max-w-lg sm:max-w-2xl mx-auto text-center relative group">
+        <p class="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-[#8c7a6b] font-medium mb-6 tracking-expand">Together With Their Families</p>
         
-        <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-[#2d2d2d] tracking-wide leading-tight">
+        <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-[#2d2d2d] tracking-wide leading-tight group-hover:text-gold-shimmer">
           Md Nafis Ansari
         </h1>
         <div class="my-3 flex items-center justify-center gap-3">
-          <span class="h-[1px] w-12 bg-[#d4af37]/40"></span>
-          <span class="font-serif-title text-2xl sm:text-4xl italic text-[#8c6f37]">&</span>
-          <span class="h-[1px] w-12 bg-[#d4af37]/40"></span>
+          <span class="h-[1px] w-12 bg-[#d4af37]/40 group-hover:w-20 transition-all duration-500"></span>
+          <span class="font-serif-title text-2xl sm:text-4xl italic text-[#8c6f37] transition-transform duration-500 group-hover:scale-125">&</span>
+          <span class="h-[1px] w-12 bg-[#d4af37]/40 group-hover:w-20 transition-all duration-500"></span>
         </div>
-        <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-[#2d2d2d] tracking-wide leading-tight">
+        <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-[#2d2d2d] tracking-wide leading-tight group-hover:text-gold-shimmer">
           Afreen
         </h1>
 
         <div class="border-t border-[#d4af37]/20 pt-6 mt-8">
-          <p class="text-[11px] sm:text-xs tracking-[0.2em] font-semibold uppercase text-[#5a544d] text-center">
+          <p class="text-[11px] sm:text-xs tracking-[0.2em] font-semibold uppercase text-[#5a544d] text-center tracking-expand">
             Wednesday, April 07, 2027 • 07:00 PM
           </p>
         </div>
@@ -235,13 +286,13 @@
       — Surah Ar-Rum (30:21)
     </p>
 
-    <!-- Urdu Poetry Card -->
-    <div data-aos="fade-left" data-aos-delay="300" dir="rtl" class="glass-card p-6 sm:p-10 rounded-3xl border border-[#d4af37]/30 shadow-md my-8 w-full text-center">
+    <!-- Urdu Poetry Card with Font Transitions -->
+    <div data-aos="fade-left" data-aos-delay="300" dir="rtl" class="glass-card p-6 sm:p-10 rounded-3xl border border-[#d4af37]/30 shadow-md my-8 w-full text-center group">
       <p class="font-urdu text-lg sm:text-2xl leading-loose text-[#8c6f37] mb-4 text-center">
         دو دِلوں کا ملن ایک پاک رشتہ ہے<br>
         یہ رب کریم کا خاص کرم اور تحفہ ہے
       </p>
-      <div class="w-10 h-[1px] bg-[#d4af37]/40 mx-auto mb-4"></div>
+      <div class="w-10 h-[1px] bg-[#d4af37]/40 mx-auto mb-4 group-hover:w-24 transition-all duration-500"></div>
       <p class="font-serif-title italic text-[#5a544d] text-sm sm:text-base text-center" dir="ltr">
         "Two hearts unite in a sacred bond blessed by the grace and mercy of the Almighty."
       </p>
@@ -261,12 +312,12 @@
     <div class="w-full text-center" dir="ltr">
       <h2 data-aos="fade-right" class="font-serif-title text-3xl sm:text-4xl mb-8 text-[#2d2d2d] text-center font-semibold">Venue & Program Details</h2>
       
-      <div data-aos="fade-right" data-aos-delay="150" class="glass-card p-8 sm:p-12 rounded-3xl shadow-xl border border-[#d4af37]/30 text-center relative">
+      <div data-aos="fade-right" data-aos-delay="150" class="glass-card p-8 sm:p-12 rounded-3xl shadow-xl border border-[#d4af37]/30 text-center relative group">
         <h3 class="font-serif-title text-2xl sm:text-3xl mb-1 text-[#8c6f37] font-semibold">Grand Walima Reception</h3>
-        <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-[0.2em] mb-6">Wednesday, April 7, 2027 • 7:00 PM Onwards</p>
+        <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-[0.2em] mb-6 tracking-expand">Wednesday, April 7, 2027 • 7:00 PM Onwards</p>
         
         <div class="space-y-1 mb-8 text-[#5a544d] text-center">
-          <p class="text-xl sm:text-2xl font-serif-title font-bold text-[#2d2d2d]">R.S. Palace / R.S. Garden</p>
+          <p class="text-xl sm:text-2xl font-serif-title font-bold text-[#2d2d2d] group-hover:text-[#a38148] transition-colors">R.S. Palace / R.S. Garden</p>
           <p class="text-xs sm:text-sm leading-relaxed">Poddar Para Road, Phularibad, Jharia</p>
           <p class="text-xs sm:text-sm leading-relaxed">Dhanbad, Jharkhand - 828111</p>
         </div>
@@ -281,16 +332,16 @@
 
   <!-- ==================== SECTION 5: INVITATION REQUEST ==================== -->
   <section id="section5" class="py-16 sm:py-24 px-4 w-full max-w-2xl mx-auto text-center z-20 relative">
-    <div data-aos="fade-up" class="glass-card p-8 sm:p-12 rounded-3xl border border-[#d4af37]/30 shadow-lg text-center">
+    <div data-aos="fade-up" class="glass-card p-8 sm:p-12 rounded-3xl border border-[#d4af37]/30 shadow-lg text-center group">
       <p data-aos="fade-left" dir="rtl" class="font-urdu text-lg sm:text-2xl text-[#8c6f37] mb-4 text-center leading-relaxed">آپ کی تشریف آوری ہمارے لیے باعثِ مسرت ہوگی</p>
       <h2 dir="ltr" class="font-serif-title text-2xl sm:text-3xl mb-3 text-[#2d2d2d] text-center font-semibold">Kindly Grace Us With Your Presence</h2>
-      <div class="w-12 h-[1px] bg-[#d4af37] mx-auto mb-6"></div>
+      <div class="w-12 h-[1px] bg-[#d4af37] mx-auto mb-6 group-hover:w-28 transition-all duration-500"></div>
       
       <p dir="ltr" class="text-xs sm:text-base leading-relaxed text-[#5a544d] font-serif-title italic mb-8 text-center">
         "We cordially request the honor of your presence and prayers to grace the celebratory occasion of our Walima reception. Your presence will add immense joy to our celebration."
       </p>
       
-      <p dir="ltr" class="text-[10px] uppercase tracking-[0.2em] text-[#8c6f37] font-semibold text-center">
+      <p dir="ltr" class="text-[10px] uppercase tracking-[0.2em] text-[#8c6f37] font-semibold text-center tracking-expand">
         With Best Compliments & Regards From Friends & Family
       </p>
     </div>
@@ -306,28 +357,28 @@
 
   <!-- ==================== COUNTDOWN POP-UP MODAL ==================== -->
   <div id="countdownModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-all">
-    <div class="glass-card bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 max-w-xs sm:max-w-sm w-full text-center relative border border-[#d4af37]/40 shadow-2xl mx-auto">
+    <div class="glass-card bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 max-w-xs sm:max-w-sm w-full text-center relative border border-[#d4af37]/40 shadow-2xl mx-auto group">
       <button onclick="toggleCountdownModal()" type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 cursor-pointer">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
-      <p class="text-[10px] uppercase tracking-[0.2em] text-[#8c6f37] mb-6 font-semibold text-center">Countdown to the Special Evening</p>
+      <p class="text-[10px] uppercase tracking-[0.2em] text-[#8c6f37] mb-6 font-semibold text-center tracking-expand">Countdown to the Special Evening</p>
       
       <div class="grid grid-cols-4 gap-2 text-center mb-2">
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm">
-          <span id="timer-days" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37]">00</span>
+        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
+          <span id="timer-days" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
           <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Days</span>
         </div>
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm">
-          <span id="timer-hours" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37]">00</span>
+        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
+          <span id="timer-hours" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
           <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Hours</span>
         </div>
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm">
-          <span id="timer-minutes" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37]">00</span>
+        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
+          <span id="timer-minutes" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
           <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Mins</span>
         </div>
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm">
-          <span id="timer-seconds" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37]">00</span>
+        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
+          <span id="timer-seconds" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
           <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Secs</span>
         </div>
       </div>
