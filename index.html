@@ -125,6 +125,15 @@
       transform: scale(1.1);
       color: #a38148;
     }
+
+    /* Interactive Date & Time Countdown Trigger Link */
+    .countdown-trigger-btn {
+      transition: all 0.3s ease;
+    }
+    .countdown-trigger-btn:hover {
+      color: #a38148;
+      border-color: #a38148;
+    }
   </style>
 </head>
 <body class="bg-floral-invitation text-[#3d3a36] font-sans-body antialiased selection:bg-[#d4af37]/20 w-full overflow-x-hidden min-h-screen relative">
@@ -250,10 +259,18 @@
           Afreen
         </h1>
 
-        <div class="border-t border-[#d4af37]/20 pt-6 mt-8">
-          <p class="text-[11px] sm:text-xs tracking-[0.2em] font-semibold uppercase text-[#5a544d] text-center tracking-expand">
-            Wednesday, April 07, 2027 • 07:00 PM
-          </p>
+        <!-- Interactive Countdown Trigger Area -->
+        <div class="border-t border-[#d4af37]/20 pt-6 mt-8 flex flex-col items-center justify-center">
+          <button type="button" onclick="toggleCountdownModal()" class="countdown-trigger-btn group/btn inline-flex flex-col items-center justify-center cursor-pointer border-b border-dashed border-[#8c6f37]/60 pb-1 hover:border-[#a38148] transition-all">
+            <span class="text-[11px] sm:text-xs tracking-[0.2em] font-semibold uppercase text-[#5a544d] text-center transition-colors group-hover/btn:text-[#a38148]">
+              WEDNESDAY, 7 APRIL 2027 · 7:00 PM
+            </span>
+          </button>
+          
+          <button type="button" onclick="toggleCountdownModal()" class="mt-3 text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-bold text-[#8c6f37] flex items-center gap-1.5 hover:text-[#a38148] transition-colors cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-[#d4af37] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>TAP THE TIME TO SEE THE COUNTDOWN</span>
+          </button>
         </div>
       </div>
     </div>
@@ -356,30 +373,44 @@
   </div>
 
   <!-- ==================== COUNTDOWN POP-UP MODAL ==================== -->
-  <div id="countdownModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-all">
-    <div class="glass-card bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 max-w-xs sm:max-w-sm w-full text-center relative border border-[#d4af37]/40 shadow-2xl mx-auto group">
-      <button onclick="toggleCountdownModal()" type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 cursor-pointer">
+  <div id="countdownModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
+    <div class="glass-card bg-[#FAF7F2] rounded-3xl p-6 sm:p-10 max-w-sm sm:max-w-md w-full text-center relative border border-[#d4af37]/40 shadow-2xl mx-auto group transform scale-95 transition-all duration-300">
+      
+      <!-- Close Button (X) -->
+      <button onclick="toggleCountdownModal()" type="button" aria-label="Close Modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 transition-colors cursor-pointer p-1 rounded-full hover:bg-black/5">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
-      <p class="text-[10px] uppercase tracking-[0.2em] text-[#8c6f37] mb-6 font-semibold text-center tracking-expand">Countdown to the Special Evening</p>
-      
-      <div class="grid grid-cols-4 gap-2 text-center mb-2">
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
-          <span id="timer-days" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
-          <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Days</span>
+      <!-- In Shaa Allah Arabic Calligraphy Header -->
+      <p class="font-arabic text-2xl sm:text-3xl text-[#8c6f37] font-bold mb-1 leading-relaxed" dir="rtl">
+        إِنْ شَاءَ ٱللَّٰهُ
+      </p>
+
+      <!-- Modal Main Heading & Date Subheading -->
+      <h3 class="font-serif-title text-2xl sm:text-3xl font-semibold text-[#2d2d2d] mb-1">
+        Countdown to our Walima
+      </h3>
+      <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#8c7a6b] font-medium mb-6">
+        WEDNESDAY, 7 APRIL 2027 · 7:00 PM
+      </p>
+
+      <!-- 4 Unit Grid Timer Cards -->
+      <div class="grid grid-cols-4 gap-2 sm:gap-3 text-center mb-2">
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="timer-days" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">DAYS</span>
         </div>
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
-          <span id="timer-hours" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
-          <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Hours</span>
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="timer-hours" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">HOURS</span>
         </div>
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
-          <span id="timer-minutes" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
-          <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Mins</span>
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="timer-minutes" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">MINS</span>
         </div>
-        <div class="bg-white/90 p-2.5 rounded-2xl border border-[#d4af37]/20 shadow-sm countdown-box">
-          <span id="timer-seconds" class="block font-serif-title text-xl sm:text-2xl font-bold text-[#8c6f37] countdown-digit">00</span>
-          <span class="text-[8px] uppercase tracking-[0.15em] text-gray-500 font-semibold">Secs</span>
+        <div class="bg-white/90 p-3 sm:p-4 rounded-2xl border border-[#d4af37]/25 shadow-sm countdown-box flex flex-col justify-center items-center">
+          <span id="timer-seconds" class="block font-serif-title text-2xl sm:text-3xl font-bold text-[#8c6f37] countdown-digit leading-none mb-1">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.15em] text-gray-500 font-semibold">SECS</span>
         </div>
       </div>
     </div>
@@ -456,10 +487,26 @@
     updateCountdownTimer();
     setInterval(updateCountdownTimer, 1000);
 
-    // Countdown Modal Controls
+    // Countdown Modal Controls with Animated Transitions
     function toggleCountdownModal() {
       const modal = document.getElementById('countdownModal');
-      modal.classList.toggle('hidden');
+      const innerCard = modal.querySelector('div');
+
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0', 'pointer-events-none');
+          innerCard.classList.remove('scale-95');
+          innerCard.classList.add('scale-100');
+        }, 10);
+      } else {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        innerCard.classList.remove('scale-100');
+        innerCard.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 300);
+      }
     }
 
     // Audio Controls Toggle
