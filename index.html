@@ -1,927 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Wedding Invitation - Suraj & Twinkle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Great+Vibes&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #8B0000;
-            --secondary: #D4AF37;
-            --accent: #FFD700;
-            --dark: #2C1810;
-            --light: #FFF8F0;
-            --text: #3E2723;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            overflow-x: hidden;
-            width: 100%;
-            perspective: 1000px;
-        }
-
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            overflow-x: hidden;
-            background: var(--light);
-            color: var(--text);
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
-            animation: pageLoad 0.8s ease-out;
-            width: 100%;
-            max-width: 100vw;
-        }
-
-        @keyframes pageLoad {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 60px 20px;
-            opacity: 0;
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        }
-
-        /* Alternate horizontal slide directions with subtle rotation */
-        .section:nth-child(odd) {
-            transform: translateX(-100px) rotateY(5deg) scale(0.95);
-        }
-
-        .section:nth-child(even) {
-            transform: translateX(100px) rotateY(-5deg) scale(0.95);
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateX(0) rotateY(0deg) scale(1);
-            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.08);
-        }
-
-        /* Simplify on mobile */
-        @media (max-width: 768px) {
-            .section:nth-child(odd) {
-                transform: translateX(-50px) scale(0.95);
-            }
-
-            .section:nth-child(even) {
-                transform: translateX(50px) scale(0.95);
-            }
-
-            .section.visible {
-                transform: translateX(0) scale(1);
-                box-shadow: none;
-            }
-        }
-
-        .pattern-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .mandala {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            opacity: 0.03;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" fill="none" stroke="%238B0000" stroke-width="0.5"/><circle cx="100" cy="100" r="70" fill="none" stroke="%238B0000" stroke-width="0.5"/><circle cx="100" cy="100" r="50" fill="none" stroke="%238B0000" stroke-width="0.5"/><circle cx="100" cy="100" r="30" fill="none" stroke="%238B0000" stroke-width="0.5"/></svg>');
-            animation: rotate 60s linear infinite;
-            pointer-events: none;
-        }
-
-        .mandala-1 { top: -100px; left: -100px; }
-        .mandala-2 { bottom: -100px; right: -100px; }
-
-        @media (max-width: 768px) {
-            .mandala {
-                width: 250px;
-                height: 250px;
-                opacity: 0.02;
-            }
-            .mandala-1 { top: -50px; left: -50px; }
-            .mandala-2 { bottom: -50px; right: -50px; }
-        }
-
-        @media (max-width: 480px) {
-            .mandala {
-                display: none;
-            }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .content {
-            max-width: 900px;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            width: 100%;
-            padding: 0 10px;
-        }
-
-        /* Welcome Section */
-        #welcome {
-            background: linear-gradient(135deg, var(--primary) 0%, #5D0000 100%);
-            color: var(--light);
-        }
-
-        .welcome-content {
-            animation: fadeInScale 1.5s ease;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .om-symbol {
-            font-size: 80px;
-            color: var(--accent);
-            margin-bottom: 30px;
-            animation: glow 2s ease-in-out infinite, float 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
-            50% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.6); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            animation: slideInFromTop 1s ease-out;
-        }
-
-        @keyframes slideInFromTop {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .script-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5em;
-            color: var(--accent);
-            margin: 20px 0;
-            animation: slideInFromTop 1.2s ease-out 0.5s both;
-        }
-
-        .date-banner {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 15px 40px;
-            display: inline-block;
-            margin-top: 30px;
-            font-size: 1.3em;
-            font-weight: 600;
-            letter-spacing: 2px;
-            border-radius: 50px;
-            animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6); }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            padding: 10px;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-20px); }
-            60% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        .arrow-down {
-            width: 30px;
-            height: 30px;
-            border-left: 3px solid var(--accent);
-            border-bottom: 3px solid var(--accent);
-            transform: rotate(-45deg);
-        }
-
-        /* Intro Section */
-        #intro {
-            background: var(--light);
-        }
-
-        .intro-text {
-            font-size: 1.4em;
-            line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto;
-            font-style: italic;
-            color: var(--text);
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .divider {
-            width: 200px;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--secondary), transparent);
-            margin: 40px auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .divider::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5em;
-            color: var(--primary);
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--secondary);
-            animation: expandWidth 0.8s ease-out 0.5s both;
-        }
-
-        @keyframes expandWidth {
-            from { width: 0; }
-            to { width: 60px; }
-        }
-
-        /* Profile Sections */
-        .profile-section {
-            background: white;
-        }
-
-        .profile-card {
-            text-align: center;
-            animation: slideInLeft 1s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .profile-name {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3em;
-            color: var(--primary);
-            margin-bottom: 10px;
-            animation: fadeIn 1.5s ease-out 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .profile-title {
-            font-size: 1.2em;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-weight: 600;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .profile-desc {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: var(--text);
-            max-width: 450px;
-            margin: 0 auto;
-        }
-
-        /* Venue Section */
-        #venue {
-            background: linear-gradient(to bottom, #FFF8F0, #FFF0E0);
-        }
-
-        .venue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .venue-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
-            border-top: 5px solid var(--secondary);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-            animation: slideUp 0.8s ease-out both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .venue-card:nth-child(1) { animation-delay: 0.1s; }
-        .venue-card:nth-child(2) { animation-delay: 0.2s; }
-        .venue-card:nth-child(3) { animation-delay: 0.3s; }
-        .venue-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .venue-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
-        }
-
-        @media (hover: none) {
-            .venue-card:hover {
-                transform: none;
-            }
-        }
-
-        .venue-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .venue-label {
-            font-family: 'Cinzel', serif;
-            font-size: 1.7em;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .venue-subtitle {
-            font-size: 1em;
-            color: var(--secondary);
-            margin-top: 5px;
-            margin-bottom: 8px;
-            font-style: italic;
-        }
-
-        .venue-detail {
-            font-size: 1.4em;
-            line-height: 1.8;
-            color: var(--text);
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            font-weight: 500;
-        }
-
-        .map-placeholder {
-            margin-top: 50px;
-            padding: 60px;
-            background: white;
-            border-radius: 20px;
-            border: 2px dashed var(--secondary);
-            text-align: center;
-            font-size: 1.2em;
-            color: var(--text);
-        }
-
-        /* Navigation Dots */
-        .nav-dots {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--secondary);
-            margin: 15px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0.5;
-        }
-
-        .dot.active {
-            opacity: 1;
-            transform: scale(1.5);
-            background: var(--primary);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { 
-                font-size: 1.8em !important;
-                padding: 0 10px;
-                line-height: 1.3;
-            }
-            h2 { 
-                font-size: 1.5em; 
-                margin-bottom: 20px;
-            }
-            .om-symbol { 
-                font-size: 50px; 
-                margin-bottom: 20px;
-            }
-            .nav-dots { 
-                display: none; 
-            }
-            .script-text {
-                font-size: 1.5em;
-                padding: 0 15px;
-                margin: 15px 0;
-            }
-            .date-banner {
-                font-size: 0.9em;
-                padding: 10px 25px;
-                letter-spacing: 1px;
-            }
-            #welcome {
-                padding: 40px 15px;
-            }
-            #welcome h1:first-of-type {
-                font-size: 2em !important;
-            }
-            #welcome p {
-                font-size: 1em !important;
-                padding: 0 10px;
-            }
-            .intro-text {
-                font-size: 1.1em;
-                padding: 0 10px;
-                line-height: 1.7;
-            }
-            .venue-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .venue-card {
-                padding: 25px 20px;
-            }
-            .venue-icon {
-                font-size: 2.5em;
-            }
-            .venue-label {
-                font-size: 1.4em;
-            }
-            .venue-subtitle {
-                font-size: 0.95em;
-            }
-            .venue-detail {
-                font-size: 1.2em;
-            }
-            .profile-name {
-                font-size: 2em;
-            }
-            .profile-title {
-                font-size: 1em;
-                padding: 0 10px;
-            }
-            .profile-desc {
-                font-size: 1em;
-                padding: 0 15px;
-            }
-            .map-placeholder {
-                padding: 30px 15px;
-                font-size: 0.95em;
-            }
-            .divider {
-                width: 150px;
-            }
-            .content {
-                max-width: 100%;
-            }
-            .footer {
-                padding: 30px 15px;
-                font-size: 1em;
-            }
-            .footer > div {
-                padding: 20px 15px !important;
-                font-size: 0.95em !important;
-            }
-            .footer p {
-                font-size: 1em !important;
-            }
-            .scroll-indicator {
-                bottom: 20px;
-            }
-            .arrow-down {
-                width: 25px;
-                height: 25px;
-            }
-        }
-
-        /* Extra small phones */
-        @media (max-width: 375px) {
-            h1 {
-                font-size: 1.5em !important;
-            }
-            h2 {
-                font-size: 1.3em;
-            }
-            .script-text {
-                font-size: 1.3em;
-            }
-            .profile-name {
-                font-size: 1.8em;
-            }
-            .om-symbol {
-                font-size: 45px;
-            }
-            .date-banner {
-                font-size: 0.85em;
-                padding: 8px 20px;
-            }
-            #welcome h1:first-of-type {
-                font-size: 1.7em !important;
-            }
-            .venue-label {
-                font-size: 1.2em;
-            }
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: var(--primary);
-            color: var(--light);
-            font-size: 1.1em;
-        }
-
-        .heart {
-            color: var(--accent);
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walima Invitation | Md Nafis Ansari & Afreen</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animation CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    .font-arabic { font-family: 'Amiri', serif; }
+    .font-urdu { font-family: 'Noto Nastaliq Urdu', serif; }
+    .font-serif-title { font-family: 'Cormorant Garamond', serif; }
+    .font-sans-body { font-family: 'Montserrat', sans-serif; }
+  </style>
 </head>
-<body>
-    <!-- Navigation Dots -->
-    <div class="nav-dots">
-        <div class="dot active" data-section="welcome"></div>
-        <div class="dot" data-section="intro"></div>
-        <div class="dot" data-section="groom"></div>
-        <div class="dot" data-section="bride"></div>
-        <div class="dot" data-section="venue"></div>
+<body class="bg-[#faf8f5] text-[#4a4a4a] font-sans-body antialiased overflow-x-hidden">
+
+  <!-- Floating Audio Player Button -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button id="audioToggle" onclick="toggleAudio()" class="bg-[#8c7a6b] text-white p-3.5 rounded-full shadow-lg hover:bg-[#736356] transition-all flex items-center justify-center focus:outline-none">
+      <svg id="musicIconPlay" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 3 .895 3 2zM9 10l12-3"/></svg>
+      <svg id="musicIconPause" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    </button>
+  </div>
+  
+  <!-- Audio Track -->
+  <audio id="bgMusic" loop autoplay preload="auto" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=acoustic-guitars-ambient-112349.mp3"></audio>
+
+  <!-- ==================== COVER SCREEN ==================== -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-cover bg-center relative border-b-2 border-[#e8e2d9]" 
+           style="background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80');">
+    
+    <!-- Thanks to Allah (Alhamdulillah) -->
+    <div data-aos="fade-down" data-aos-duration="1000" class="mb-4">
+      <p class="font-arabic text-3xl md:text-5xl text-[#8c7a6b] font-bold mb-1">
+        الْحَمْدُ لِلَّٰهِ
+      </p>
+      <p class="text-xs uppercase tracking-[0.3em] text-[#8c7a6b] font-medium">All Praise & Thanks Belong to Allah</p>
     </div>
 
-    <!-- Welcome Section -->
-    <section id="welcome" class="section visible">
-        <div class="mandala mandala-1"></div>
-        <div class="mandala mandala-2"></div>
-        <div class="pattern-overlay"></div>
-        <div class="content welcome-content">
-            <div class="om-symbol">ॐ</div>
-            <h1>You Are Invited</h1>
-            <p class="script-text">To Celebrate the Sacred Union of</p>
-            <h1 style="font-size: 2.5em; color: var(--accent);">Suraj & Twinkle</h1>
-            <p style="font-size: 1.3em; margin-top: 20px; color: var(--light); opacity: 0.9;">
-                Two hearts, one beautiful journey
-            </p>
-            <div class="date-banner">Reception - March 14, 2026</div>
-            <div class="scroll-indicator" onclick="scrollToSection('intro')">
-                <div class="arrow-down"></div>
-            </div>
-        </div>
-    </section>
+    <!-- Bismillahhir Rahmanir Rahim -->
+    <p data-aos="fade-down" data-aos-duration="1000" data-aos-delay="150" class="font-arabic text-2xl md:text-3xl text-[#2d2d2d] my-4">
+      بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    </p>
 
-    <!-- Intro Section -->
-    <section id="intro" class="section">
-        <div class="pattern-overlay"></div>
-        <div class="content">
-            <h2>A Journey of Love Begins</h2>
-            <div class="divider"></div>
-            <p class="intro-text">
-                "Where there is love, there is life."
-                <br><br>
-                With the divine blessings of Lord Ganesha and the grace of our elders,
-                we are delighted to invite you to witness the beautiful union of two souls.
-                <br><br>
-                As Suraj and Twinkle begin their eternal journey together,
-                your presence and blessings would make this celebration truly special.
-                <br><br>
-                Join us in creating memories that will last a lifetime!
-            </p>
-        </div>
-    </section>
+    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="250" class="text-xs md:text-sm uppercase tracking-[0.35em] text-[#8c7a6b] mt-2 mb-6 font-semibold">
+      Walima Invitation
+    </p>
 
-    <!-- Groom Section -->
-    <section id="groom" class="section profile-section">
-        <div class="pattern-overlay"></div>
-        <div class="content" style="max-width: 1100px;">
-            <h2>The Groom</h2>
-            <div class="divider"></div>
-            
-            <div class="profile-card" style="max-width: 500px; margin: 0 auto;">
-                <div class="profile-name">Suraj Kumar Saw</div>
-                <div class="profile-title">Son of Mr. Om Prakash Saw & Mrs. Babita Devi</div>
-                <p class="profile-desc">
-                    A journey of a thousand miles begins with a single step, 
-                    and today we take that step together into forever.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bride Section -->
-    <section id="bride" class="section profile-section">
-        <div class="pattern-overlay"></div>
-        <div class="content" style="max-width: 1100px;">
-            <h2>The Bride</h2>
-            <div class="divider"></div>
-            
-            <div class="profile-card" style="max-width: 500px; margin: 0 auto;">
-                <div class="profile-name">Twinkle Kumari</div>
-                <div class="profile-title">Daughter of Mr. Sunder Mahto & Mrs. Basanti Devi</div>
-                <p class="profile-desc">
-                    Love is not just looking at each other, 
-                    it's looking in the same direction together.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Venue Section -->
-    <section id="venue" class="section">
-        <div class="pattern-overlay"></div>
-        <div class="content" style="max-width: 1100px;">
-            <h2>Wedding Celebrations</h2>
-            <div class="divider"></div>
-            
-            <div class="venue-grid">
-                <div class="venue-card">
-                    <div class="venue-icon">🌼</div>
-                    <div class="venue-label">Haldi Ceremony</div>
-                    <div class="venue-detail">
-                        Monday, March 9, 2026
-                    </div>
-                </div>
-
-                <div class="venue-card">
-                    <div class="venue-icon">🌿</div>
-                    <div class="venue-label">Mehendi Ceremony</div>
-                    <div class="venue-detail">
-                        Tuesday, March 10, 2026
-                    </div>
-                </div>
-
-                <div class="venue-card">
-                    <div class="venue-icon">💍</div>
-                    <div class="venue-label">Wedding Procession &<br>Auspicious Wedding</div>
-                    <div class="venue-subtitle">(Barat Prasthan & Subh Vivah)</div>
-                    <div class="venue-detail">
-                        Wednesday, March 11, 2026
-                    </div>
-                </div>
-
-                <div class="venue-card">
-                    <div class="venue-icon">🎉</div>
-                    <div class="venue-label">Reception</div>
-                    <div class="venue-detail">
-                        Saturday, March 14, 2026<br>
-                        7:00 PM onwards
-                    </div>
-                </div>
-            </div>
-
-            <div class="map-placeholder">
-                <div style="font-size: 2em; margin-bottom: 15px;">📍</div>
-                <strong style="font-size: 1.4em; color: var(--primary);">Venue</strong><br><br>
-                All wedding ceremonies and the reception will be held at:<br><br>
-                <strong>Our Residence</strong><br>
-                Jharia, Katras More<br>
-                Dhanbad
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            <p style="font-size: 1.3em; margin-bottom: 20px;">
-                <strong>With Best Compliments From:</strong><br>
-                Shri Vijay Saw & Om Prakash Saw
-            </p>
-            <p style="font-size: 1.2em; opacity: 0.9;">
-                <strong>Well-wishers:</strong><br>
-                Shri Ashok Saw, Rahul Kumar Saw, Ansh Saw<br>
-                and the entire Saw family
-            </p>
-        </div>
-
-        <div style="background: var(--accent); color: var(--primary); padding: 25px; border-radius: 15px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; font-style: italic;">
-            <p style="font-size: 1.3em; font-weight: 600;">
-                💝 Special Request 💝
-            </p>
-            <p style="font-size: 1.2em; margin-top: 15px;">
-                "Please do come to my uncle (Mama) wedding!"<br>
-                <span style="font-size: 0.9em;">- Ansh Saw</span>
-            </p>
-        </div>
-
-        <p style="font-size: 1.2em;">We look forward to celebrating with you!</p>
-        <p style="margin-top: 20px; font-size: 1.1em;">With love and blessings <span class="heart">❤️</span></p>
+    <!-- Couple Names -->
+    <div data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300" class="my-2">
+      <h1 class="font-serif-title text-5xl md:text-7xl font-semibold text-[#2d2d2d]">
+        Md Nafis Ansari
+      </h1>
+      <span class="font-serif-title text-3xl md:text-4xl italic text-[#8c7a6b] my-2 block">&</span>
+      <h1 class="font-serif-title text-5xl md:text-7xl font-semibold text-[#2d2d2d]">
+        Afreen
+      </h1>
     </div>
 
-    <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px'
-        };
+    <div data-aos="fade-up" data-aos-delay="450" class="border-y border-[#8c7a6b]/40 py-3 px-8 my-8">
+      <p class="text-sm md:text-base tracking-[0.2em] font-medium uppercase text-[#3a3a3a]">Wednesday, April 07, 2027 • 07:00 PM</p>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Update nav dots
-                    const sectionId = entry.target.id;
-                    document.querySelectorAll('.dot').forEach(dot => {
-                        dot.classList.remove('active');
-                        if (dot.getAttribute('data-section') === sectionId) {
-                            dot.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, observerOptions);
+    <div data-aos="fade-up" data-aos-delay="600" class="mt-4 animate-bounce text-xs uppercase tracking-widest text-[#8c7a6b] flex flex-col items-center">
+      <span>Scroll Down For Details</span>
+      <svg class="w-4 h-4 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+  </section>
 
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
+  <!-- ==================== DETAILS & BLESSINGS ==================== -->
 
-        // Navigation dots click
-        document.querySelectorAll('.dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                const sectionId = dot.getAttribute('data-section');
-                scrollToSection(sectionId);
-            });
-        });
+  <!-- Countdown Timer Section -->
+  <section class="py-12 px-6 bg-[#f7f3ed] border-b border-[#e8e2d9]">
+    <div class="max-w-md mx-auto text-center">
+      <p class="text-xs uppercase tracking-widest text-gray-500 mb-6 font-semibold">Countdown to the Special Evening</p>
+      <div data-aos="fade-up" class="grid grid-cols-4 gap-3 md:gap-4 text-center">
+        <div class="bg-white p-3 md:p-4 rounded-xl border border-[#e8e2d9] shadow-sm">
+          <span id="timer-days" class="block font-serif-title text-2xl md:text-4xl font-semibold text-[#8c7a6b]">00</span>
+          <span class="text-[10px] uppercase tracking-widest text-gray-500 font-medium">Days</span>
+        </div>
+        <div class="bg-white p-3 md:p-4 rounded-xl border border-[#e8e2d9] shadow-sm">
+          <span id="timer-hours" class="block font-serif-title text-2xl md:text-4xl font-semibold text-[#8c7a6b]">00</span>
+          <span class="text-[10px] uppercase tracking-widest text-gray-500 font-medium">Hours</span>
+        </div>
+        <div class="bg-white p-3 md:p-4 rounded-xl border border-[#e8e2d9] shadow-sm">
+          <span id="timer-minutes" class="block font-serif-title text-2xl md:text-4xl font-semibold text-[#8c7a6b]">00</span>
+          <span class="text-[10px] uppercase tracking-widest text-gray-500 font-medium">Mins</span>
+        </div>
+        <div class="bg-white p-3 md:p-4 rounded-xl border border-[#e8e2d9] shadow-sm">
+          <span id="timer-seconds" class="block font-serif-title text-2xl md:text-4xl font-semibold text-[#8c7a6b]">00</span>
+          <span class="text-[10px] uppercase tracking-widest text-gray-500 font-medium">Secs</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Smooth scroll function
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            section.scrollIntoView({ behavior: 'smooth' });
-        }
+  <!-- Welcome Message, Qur'anic Verse & Urdu Couplet Section -->
+  <section class="py-20 px-6 max-w-3xl mx-auto text-center">
+    <p data-aos="fade-up" class="text-sm font-semibold uppercase tracking-widest text-[#8c7a6b] mb-3">Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh</p>
+    <h2 data-aos="fade-up" data-aos-delay="100" class="font-serif-title text-3xl md:text-5xl mb-6 text-[#2d2d2d]">With the Grace of Almighty Allah</h2>
+    
+    <div data-aos="fade-up" data-aos-delay="150" class="w-12 h-[1px] bg-[#8c7a6b] mx-auto mb-8"></div>
+    
+    <p data-aos="fade-up" data-aos-delay="200" class="text-base md:text-lg leading-relaxed text-gray-600 font-serif-title italic mb-2">
+      "And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts."
+    </p>
+    <p data-aos="fade-up" data-aos-delay="250" class="text-xs uppercase tracking-widest text-[#8c7a6b] font-medium mb-12">— Surah Ar-Rum (30:21)</p>
 
-        // Add floating petals animation (optional enhancement)
-        function createPetal() {
-            const petal = document.createElement('div');
-            const isSparkle = Math.random() > 0.6;
-            
-            petal.style.position = 'fixed';
-            petal.style.fontSize = isSparkle ? '20px' : '10px';
-            petal.innerHTML = isSparkle ? '✨' : '🌸';
-            petal.style.opacity = '0.8';
-            petal.style.left = Math.random() * 100 + '%';
-            petal.style.top = '-30px';
-            petal.style.pointerEvents = 'none';
-            petal.style.zIndex = '9999';
-            document.body.appendChild(petal);
+    <!-- Urdu Poetry / Couplet Section -->
+    <div data-aos="fade-up" data-aos-delay="300" class="bg-white p-8 rounded-xl border border-[#e8e2d9] shadow-sm my-8">
+      <p class="font-urdu text-xl md:text-2xl leading-loose text-[#8c7a6b] mb-4">
+        دو دِلوں کا ملن ایک پاک رشتہ ہے<br>
+        یہ رب کریم کا خاص کرم اور تحفہ ہے
+      </p>
+      <p class="font-serif-title italic text-gray-600 text-base md:text-lg">
+        "Two hearts unite in a sacred bond blessed by the grace and mercy of the Almighty."
+      </p>
+    </div>
 
-            const animation = petal.animate([
-                { 
-                    transform: 'translateY(0) rotate(0deg)', 
-                    opacity: 0.8 
-                },
-                { 
-                    transform: `translateY(${window.innerHeight + 30}px) rotate(${Math.random() * 360}deg)`, 
-                    opacity: 0 
-                }
-            ], {
-                duration: Math.random() * 4000 + 4000,
-                easing: 'ease-in'
-            });
+    <!-- Islamic Marriage Dua -->
+    <p data-aos="fade-up" data-aos-delay="350" class="font-arabic text-xl md:text-2xl text-[#8c7a6b] my-4">
+      بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+    </p>
+    <p data-aos="fade-up" data-aos-delay="400" class="text-xs uppercase tracking-widest text-gray-500 mb-8">
+      "May Allah bless you, and shower His blessings upon you, and join you together in goodness."
+    </p>
+  </section>
 
-            animation.onfinish = () => petal.remove();
-        }
+  <!-- Venue & Program Details -->
+  <section class="py-24 px-6 bg-[#f2ece4]">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 data-aos="fade-up" class="font-serif-title text-4xl md:text-5xl mb-16 text-[#2d2d2d]">Venue & Program Details</h2>
+      
+      <div class="max-w-xl mx-auto">
+        <div data-aos="zoom-in-up" data-aos-duration="1000" class="bg-white p-8 md:p-12 rounded-xl shadow-sm border border-[#e8e2d9]">
+          <h3 class="font-serif-title text-3xl md:text-4xl mb-2 text-[#8c7a6b]">Grand Walima Reception</h3>
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">Wednesday, April 7, 2027 • 7:00 PM Onwards</p>
+          
+          <div class="space-y-1 mb-8">
+            <p class="text-xl font-serif-title font-semibold text-[#2d2d2d]">R.S. Palace / R.S. Garden</p>
+            <p class="text-sm leading-relaxed text-gray-600">Poddar Para Road, Phularibad, Jharia</p>
+            <p class="text-sm leading-relaxed text-gray-600">Dhanbad, Jharkhand - 828111</p>
+          </div>
 
-        // Create occasional petals (reduced on mobile for performance)
-        const isMobile = window.innerWidth <= 768;
-        const petalInterval = isMobile ? 4000 : 2000;
-        setInterval(createPetal, petalInterval);
+          <!-- DIRECT NAVIGATION BUTTON -->
+          <button onclick="openGoogleMaps()" 
+                  type="button"
+                  class="inline-block px-8 py-3.5 text-xs uppercase tracking-widest text-white bg-[#8c7a6b] rounded-md hover:bg-[#736356] transition-colors shadow-sm font-medium cursor-pointer">
+            Get Route Directions
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Create initial burst of sparkles on load
-        setTimeout(() => {
-            for (let i = 0; i < 10; i++) {
-                setTimeout(createPetal, i * 200);
-            }
-        }, 1000);
-    </script>
+  <!-- Cordial Invitation Request Section -->
+  <section class="py-24 px-6">
+    <div data-aos="fade-up" class="max-w-xl mx-auto text-center bg-white p-8 md:p-12 rounded-xl border border-[#e8e2d9] shadow-sm">
+      <p class="font-urdu text-lg md:text-xl text-[#8c7a6b] mb-4">آپ کی تشریف آوری ہمارے لیے باعثِ مسرت ہوگی</p>
+      <h2 class="font-serif-title text-3xl md:text-4xl mb-4 text-[#2d2d2d]">Kindly Grace Us With Your Presence</h2>
+      <div class="w-12 h-[1px] bg-[#8c7a6b] mx-auto mb-6"></div>
+      
+      <p class="text-sm md:text-base leading-relaxed text-gray-600 font-serif-title italic mb-6">
+        "We cordially request the honor of your presence and prayers to grace the celebratory occasion of our Walima reception. Your presence will add immense joy to our celebration."
+      </p>
+      
+      <p class="text-xs uppercase tracking-widest text-[#8c7a6b] font-semibold">
+        With Best Compliments & Regards From Friends & Family
+      </p>
+    </div>
+  </section>
+
+  <footer class="py-8 bg-[#eae2d8] text-center text-xs tracking-widest uppercase text-gray-500">
+    Md Nafis Ansari & Afreen • 2027
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  
+  <script>
+    // Directly opens Google Maps Route Directions to R S PALACE
+    function openGoogleMaps() {
+      var mapsUrl = "https://www.google.com/maps/dir/?api=1&destination=R+S+PALACE,+Indra+Gandhi+Chowk,+Poddar+Para+Rd,+Jharia,+Dhanbad";
+      window.open(mapsUrl, '_blank');
+    }
+
+    // 1. Bidirectional Scroll Animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: true
+    });
+
+    // 2. Real-time Countdown Timer
+    const weddingDate = new Date("April 07, 2027 19:00:00").getTime();
+
+    function updateCountdownTimer() {
+      const currentTime = new Date().getTime();
+      const distance = weddingDate - currentTime;
+
+      if (distance < 0) {
+        document.getElementById("timer-days").innerText = "00";
+        document.getElementById("timer-hours").innerText = "00";
+        document.getElementById("timer-minutes").innerText = "00";
+        document.getElementById("timer-seconds").innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("timer-days").innerText = days < 10 ? '0' + days : days;
+      document.getElementById("timer-hours").innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById("timer-minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById("timer-seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+    updateCountdownTimer();
+    setInterval(updateCountdownTimer, 1000);
+
+    // 3. Audio Player
+    const music = document.getElementById('bgMusic');
+    const playIcon = document.getElementById('musicIconPlay');
+    const pauseIcon = document.getElementById('musicIconPause');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      music.play().then(() => {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      }).catch(() => {
+        document.addEventListener('click', startAudioOnInteraction, { once: true });
+        document.addEventListener('touchstart', startAudioOnInteraction, { once: true });
+        document.addEventListener('scroll', startAudioOnInteraction, { once: true });
+      });
+    });
+
+    function startAudioOnInteraction() {
+      music.play().then(() => {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      });
+    }
+
+    function toggleAudio() {
+      if (music.paused) {
+        music.play();
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      } else {
+        music.pause();
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      }
+    }
+  </script>
 </body>
 </html>
